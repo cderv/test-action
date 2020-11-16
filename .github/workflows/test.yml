@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
       - run: |
+          echo $PATH
           pandoc --version
   pandoc-windows:
     runs-on: windows-latest
@@ -20,4 +21,5 @@ jobs:
         with:
           os: windows
       - run: |
+          echo $env:PATH
           pandoc.exe --version
