@@ -7,7 +7,15 @@ name: test-pandoc-setup
 on: [workflow_dispatch]
 
 jobs:
-  build:
+  pandoc-linux:
     runs-on: ubuntu-latest
     steps:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
+      - run: pandoc --version
+  pandoc-windows:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
+        with:
+          os: windows
+      - run: pandoc --version
