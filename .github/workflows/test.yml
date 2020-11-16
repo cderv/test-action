@@ -11,8 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
+        with:
+          directory: $GITHUB_WORKSPACE/bin
       - run: |
           echo $PATH
+          ls $GITHUB_WORKSPACE/bin
           pandoc --version
   pandoc-windows:
     runs-on: windows-latest
@@ -20,8 +23,9 @@ jobs:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
         with:
           os: windows
+          directory: $GITHUB_WORKSPACE/bin
       - run: |
           echo %PATH%
-          ls ~/bin/
+          ls %GITHUB_WORKSPACE%/bin
           pandoc.exe --version
         shell: cmd
