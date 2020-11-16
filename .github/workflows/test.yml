@@ -13,7 +13,7 @@ jobs:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
       - run: |
           echo $PATH
-          ls $GITHUB_WORKSPACE/bin
+          ls $HOME/bin
           pandoc --version
   pandoc-windows:
     runs-on: windows-latest
@@ -23,6 +23,6 @@ jobs:
           os: windows
       - run: |
           echo %PATH%
-          ls %GITHUB_WORKSPACE%/bin
+          ls %HOME%/bin
           pandoc.exe --version
         shell: cmd
