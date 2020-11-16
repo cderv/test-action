@@ -20,4 +20,4 @@ jobs:
         with:
           os: windows
       - run: |
-          pandoc --version
+          pandoc.exe --version
