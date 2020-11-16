@@ -11,11 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
-      - run: pandoc --version
+      - run: |
+          echo $PATH
+          ls ~/bin
   pandoc-windows:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
         with:
           os: windows
-      - run: pandoc --version
+      - run: |
+          echo $env:PATH
+          ls ~/bin
