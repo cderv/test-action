@@ -49,11 +49,11 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
       - uses: r-lib/actions/setup-pandoc@v1
-        if: matrix.config.pandoc != "devel"
+        if: matrix.config.pandoc != 'devel'
         with:
           pandoc-version: ${{ matrix.config.pandoc }}
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
-        if: matrix.config.pandoc == "devel"
+        if: matrix.config.pandoc == 'devel'
       - name: Install deps
         run: install.packages("rmarkdown", repos = Sys.getenv("RSPM"))
         shell: Rscript {0}
