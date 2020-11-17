@@ -19,8 +19,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
-        with:
-          os: windows
       - run: |
           echo %PATH%
           ls %GITHUB_WORKSPACE%/bin
