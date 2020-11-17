@@ -55,7 +55,7 @@ jobs:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
         if: matrix.config.pandoc == 'devel'
       - name: Install deps
-        run: install.packages("rmarkdown", repos = Sys.getenv("RSPM"))
+        run: install.packages("rmarkdown")
         shell: Rscript {0}
       - name: Pandoc version
         run: rmarkdown::find_pandoc()
