@@ -6,16 +6,6 @@ name: test-pandoc-setup
 # events but only for the main branch
 on: [workflow_dispatch]
 
-strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - {os: macOS-latest,   pandoc: '2.9.2.1',    r: 'release'}
-          - {os: windows-latest, pandoc: '2.7.3',    r: 'release'}
-          - {os: windows-latest, pandoc: 'devel',    r: 'release'}
-          - {os: ubuntu-20.04,   pandoc: '2.11',    r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   pandoc: 'devel',    r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-
 jobs:
   pandoc-linux:
     runs-on: ubuntu-latest
@@ -43,6 +33,15 @@ jobs:
   using-r:
     runs-on: ${{ matrix.os}
     name: ${{ matrix.config.os }} (${{ matrix.config.r }}) [Pandoc ${{matrix.config.pandoc}}]
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {os: macOS-latest,   pandoc: '2.9.2.1',    r: 'release'}
+          - {os: windows-latest, pandoc: '2.7.3',    r: 'release'}
+          - {os: windows-latest, pandoc: 'devel',    r: 'release'}
+          - {os: ubuntu-20.04,   pandoc: '2.11',    r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   pandoc: 'devel',    r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
     env: 
       RSPM: ${{ matrix.config.rspm }}
     steps:
