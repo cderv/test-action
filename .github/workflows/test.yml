@@ -22,3 +22,10 @@ jobs:
           echo %PATH%
           pandoc.exe --version
         shell: cmd
+  pandoc-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
+      - run: |
+          echo $PATH
+          pandoc --version
