@@ -59,7 +59,7 @@ jobs:
         shell: Rscript {0}
       - name: Check even if pandoc install by OS
         if: runner.os == 'Linux'
-        run: apt-get install -y pandoc
+        run: sudo apt-get install -y pandoc
         shell: bash
       - name: Pandoc version
         run: rmarkdown::find_pandoc()
