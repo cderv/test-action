@@ -1,0 +1,16 @@
+name: ignore
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on: 
+  push:
+   - main
+  path: 
+   - !*.txt
+   - dummy.txt
+
+jobs:
+  check-ignore:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "finished"
