@@ -4,10 +4,11 @@ name: ignore
 # events but only for the main branch
 on: 
   push:
-   - main
-  path: 
-   - '!*.txt'
-   - 'dummy.txt'
+    branches:
+      - main
+    paths: 
+      - '!*.txt'
+      - 'dummy.txt'
 
 jobs:
   check-ignore:
