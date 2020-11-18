@@ -6,8 +6,8 @@ on:
   push:
    - main
   path: 
-   - !*.txt
-   - dummy.txt
+   - '!*.txt'
+   - 'dummy.txt'
 
 jobs:
   check-ignore:
