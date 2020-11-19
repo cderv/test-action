@@ -16,4 +16,8 @@ jobs:
           ./install-base.sh
           pwd
           ls
-          ls ~
+          mv texlive ../../
+          ls ../../
+          echo $PATH
+          ../../texlive/bin/*/tlmgr path add
+          echo $PATH
