@@ -1,0 +1,18 @@
+on:
+  push:
+    branches:
+      - main
+      - master
+
+name: check required LateX packages
+
+jobs:
+  test-path:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          mkdir ~/bin
+          ls ~
+          echo $PATH
+          export PATH=~/bin:$PATH
+          echo $PATH
