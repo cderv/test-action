@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          mkdir ~/bin
+          wget https://raw.githubusercontent.com/yihui/tinytex/master/tools/install-base.sh
+          chmod +x install-base.sh
+          ./install-base.sh
+          pwd
+          ls
           ls ~
-          echo $PATH
-          export PATH=~/bin:$PATH
-          echo $PATH
