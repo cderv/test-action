@@ -15,5 +15,5 @@ jobs:
     
     steps:
       - env:
-          TEST: "$(git log --format=%B --no-merges -n 1)"
+          TEST: $(git log --format=%B --no-merges -n 1)
         run: echo $TEST
