@@ -1,0 +1,66 @@
+# This is a basic workflow to help you get started with Actions
+
+name: test-pandoc-setup
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on: [workflow_dispatch]
+
+jobs:
+  pandoc-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
+      - run: |
+          echo $PATH
+          pandoc --version
+          echo "# Test" | pandoc -t html
+  pandoc-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
+      - run: |
+          echo %PATH%
+          pandoc.exe --version
+        shell: cmd
+  pandoc-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
+      - run: |
+          echo $PATH
+          pandoc --version
+  using-r:
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) [Pandoc ${{matrix.config.pandoc}}]
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {os: macOS-latest,   pandoc: '2.9.2.1',    r: 'release'}
+          - {os: windows-latest, pandoc: '2.7.3',    r: 'release'}
+          - {os: windows-latest, pandoc: 'devel',    r: 'release'}
+          - {os: ubuntu-20.04,   pandoc: '2.11',    r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   pandoc: 'devel',    r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+    env: 
+      RSPM: ${{ matrix.config.rspm }}
+    steps:
+      - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: ${{ matrix.config.r }}
+      - uses: r-lib/actions/setup-pandoc@v1
+        if: matrix.config.pandoc != 'devel'
+        with:
+          pandoc-version: ${{ matrix.config.pandoc }}
+      - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
+        if: matrix.config.pandoc == 'devel'
+      - name: Install deps
+        run: install.packages("rmarkdown")
+        shell: Rscript {0}
+      - name: Check even if pandoc install by OS
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y pandoc
+        shell: bash
+      - name: Pandoc version
+        run: rmarkdown::find_pandoc()
+        shell: Rscript {0}
