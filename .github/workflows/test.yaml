@@ -39,5 +39,5 @@ jobs:
       
       - run: |
           install.packages("rmarkdown")
-          rmarkdown::render("resources/test.Rmd", rmarkdown::pdf_document(), df_print = "kable")
+          rmarkdown::render("resources/test.Rmd", rmarkdown::pdf_document())
         shell: Rscript {0}
