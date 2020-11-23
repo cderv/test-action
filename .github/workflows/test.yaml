@@ -14,6 +14,17 @@ jobs:
     runs-on: macOS-latest
     
     steps:
-      - env:
-          TEST: $(git log --format=%B --no-merges -n 1)
-        run: echo $TEST
+      - uses: r-lib/actions/setup-r@v1
+      
+      - name: Add some R options for later steps
+        run: |
+          cat(readLines("~/.Rprofile"), sep = "\n")
+          cat("\noptions(tinytex.verbose = TRUE)\n", file = "~/.Rprofile", append = TRUE)
+          cat(readLines("~/.Rprofile"), sep = "\n")
+        shell: Rscript {0}
+      
+      - run: | 
+          getOption('tinytex.verbose')
+          getOption('crayon.enabled')
+        shell: Rscript {0}
+      
