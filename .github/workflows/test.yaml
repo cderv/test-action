@@ -14,7 +14,16 @@ jobs:
     runs-on: macOS-latest
     
     steps:
+      - uses: actions/checkout@v2
+        
       - uses: r-lib/actions/setup-r@v1
+      
+      - uses: r-lib/actions/setup-pandoc@v1
+      
+      - uses: r-lib/actions/setup-tinytex@5f1c134
+        env:
+          # install full prebuilt version
+          TINYTEX_INSTALLER: TinyTeX
       
       - name: Add some R options for later steps
         run: |
@@ -28,3 +37,7 @@ jobs:
           getOption('crayon.enabled')
         shell: Rscript {0}
       
+      - run: |
+          install.packages("rmarkdown")
+          rmarkdown::render("resources/test.Rmd", rmarkdown::pdf_document(), df_print = "kable")
+        shell: Rscript {0}
