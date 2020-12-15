@@ -46,7 +46,7 @@ jobs:
           tinytex:::fc_cache()
         shell: Rscript {0}
 
-     - name: Cache 
-       run: | 
+      - name: Cache
+        run: | 
           fc-cache -f -v "~/Library/fonts"
           fc-list
