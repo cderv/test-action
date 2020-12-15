@@ -11,23 +11,36 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: macos-latest
    
     steps:
       - uses: actions/checkout@v2
         
       - uses: r-lib/actions/setup-r@v1
         
-      - name: change temp dir
-        run: echo "TMPDIR=${{ runner.temp }}" >> $GITHUB_ENV
-        shell: bash
-        
-      - name: what is tempdir ?
-        run: tempdir()
-        shell: Rscript {0}
-        
-      - name: what is tempdir if we change ?
+      - name: Install TinyTeX
+        uses: r-lib/actions/setup-tinytex@5f1c134
         env:
-          TMPDIR: ${{ runner.temp }}
-        run: tempdir()
+          # install full prebuilt version
+          TINYTEX_INSTALLER: TinyTeX
+        
+      - name: Install OS dependencies
+        run: |
+          brew update --quiet
+          brew install --cask xquartz
+          brew tap homebrew/cask-fonts
+          brew install --cask font-source-code-pro
+          brew install fontconfig
+        
+      - name: Check font
+        run: ls -R ~/Library/fonts
+        
+      - name: Check font 2
+        run: fc-list
+        
+      - name: Check font
+        run: |
+          install.packages("tinytex")
+          tinytex:::tweak_path()
+          system2("fc-list")
         shell: Rscript {0}
