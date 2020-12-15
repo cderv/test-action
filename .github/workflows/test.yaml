@@ -43,4 +43,10 @@ jobs:
           install.packages("tinytex")
           tinytex:::tweak_path()
           system2("fc-list")
+          tinytex:::fc_cache()
         shell: Rscript {0}
+
+     - name: Cache 
+       run: | 
+          fc-cache -f -v "~/Library/fonts"
+          fc-list
