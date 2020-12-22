@@ -11,42 +11,13 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: windows-latest
    
-    steps:
-      - uses: actions/checkout@v2
-        
-      - uses: r-lib/actions/setup-r@v1
-        
+    steps:      
       - name: Install TinyTeX
         uses: r-lib/actions/setup-tinytex@5f1c134
         env:
           # install full prebuilt version
           TINYTEX_INSTALLER: TinyTeX
-        
-      - name: Install OS dependencies
-        run: |
-          brew update --quiet
-          brew install --cask xquartz
-          brew tap homebrew/cask-fonts
-          brew install --cask font-source-code-pro
-          brew install fontconfig
-        
-      - name: Check font
-        run: ls -R ~/Library/fonts
-        
-      - name: Check font 2
-        run: fc-list
-        
-      - name: Check font
-        run: |
-          install.packages("tinytex")
-          tinytex:::tweak_path()
-          system2("fc-list")
-          tinytex:::fc_cache()
-        shell: Rscript {0}
-
-      - name: Cache
-        run: | 
-          fc-cache -f -v "~/Library/fonts"
-          fc-list
+      - name: Check tlmgr
+        run: tlmgr --version
