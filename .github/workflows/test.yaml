@@ -11,13 +11,8 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
    
     steps:      
-      - name: Install TinyTeX
-        uses: r-lib/actions/setup-tinytex@5f1c134
-        env:
-          # install full prebuilt version
-          TINYTEX_INSTALLER: TinyTeX
       - name: Check tlmgr
-        run: tlmgr --version
+        run: ls ~
