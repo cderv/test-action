@@ -1,0 +1,16 @@
+# This is a basic workflow to help you get started with Actions
+
+name: test-tinytex-bin-powershell
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on: [workflow_dispatch]
+
+jobs:
+  tinytex-windows:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/yihui/tinytex/new-pwsh-download-method/tools/install-bin-windows.bat -OutFile install-bin-windows.bat"
+          install-bin-windows.bat
+        shell: cmd
