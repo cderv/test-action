@@ -10,11 +10,7 @@ jobs:
   tinytex-windows:
     runs-on: windows-latest
     steps:
-      - name: instal tinytex 
-        run: |
-          powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/yihui/tinytex/new-pwsh-download-method/tools/install-bin-windows.bat -OutFile install-bin-windows.bat"
-          install-bin-windows.bat
-        shell: cmd
+      - uses: cderv/actions/setup-tinytex@new-tinytex-setup
       - name: check tlmgr installation
         run: |
           echo %PATH%
