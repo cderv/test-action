@@ -11,7 +11,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: cderv/actions/setup-tinytex@new-tinytex-setup
+        env:
+          TINYTEX_INSTALLER: TinyTeX
       - name: check tlmgr installation
         run: |
-          echo %PATH%
+          echo $env:PATH
           tlmgr --version
