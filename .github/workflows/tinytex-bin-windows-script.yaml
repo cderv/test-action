@@ -7,12 +7,26 @@ name: test-tinytex-bin-powershell
 on: [workflow_dispatch]
 
 jobs:
-  tinytex-windows:
+  tinytex-windows-action:
     runs-on: windows-latest
     steps:
       - uses: cderv/actions/setup-tinytex@new-tinytex-setup
         env:
           TINYTEX_INSTALLER: TinyTeX
+      - name: check tlmgr installation
+        run: |
+          echo $env:PATH
+          tlmgr --version
+  tinytex-windows-script:
+    runs-on: windows-latest
+    steps:
+      - name: instal tinytex
+        env:
+          TINYTEX_INSTALLER: TinyTeX
+        run: |
+          powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/yihui/tinytex/new-pwsh-download-method/tools/install-bin-windows.bat -OutFile install-bin-windows.bat"
+          install-bin-windows.bat
+        shell: cmd
       - name: check tlmgr installation
         run: |
           echo $env:PATH
