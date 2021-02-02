@@ -24,7 +24,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-2-${{ hashFiles('.packages') }}
+          key: ${{ runner.os }}-2-${{ hashFiles('.packages/**/DESCRIPTION') }}
           restore-keys: ${{ runner.os }}-1-
       - name: Installed package
         run: |
