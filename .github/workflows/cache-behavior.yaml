@@ -24,10 +24,14 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-1-${{ hashFiles('.packages/**/DESCRIPTION') }}
+          key: ${{ runner.os }}-1-${{ hashFiles('.packages') }}
           restore-keys: ${{ runner.os }}-1-
       - name: Install pak and query dependencies
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
           pak::pak("glue")
+          pak::pak("sessioninfo")
+        shell: Rscript {0}
+      - name: Session Infos
+        run: sessioninfo::session_info(pkgs, include_base = TRUE)
         shell: Rscript {0}
