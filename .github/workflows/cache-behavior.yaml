@@ -24,8 +24,15 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-1-${{ hashFiles('.packages') }}
+          key: ${{ runner.os }}-2-${{ hashFiles('.packages') }}
           restore-keys: ${{ runner.os }}-1-
+      - name: Installed package
+        run: |
+          options(width = 100)
+          pkgs <- .packages(TRUE)
+          pkgs
+          .libPaths()
+        shell: Rscript {0}
       - name: Install pak and query dependencies
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
