@@ -33,5 +33,8 @@ jobs:
           pak::pak("sessioninfo")
         shell: Rscript {0}
       - name: Session Infos
-        run: sessioninfo::session_info(pkgs, include_base = TRUE)
+        run: |
+          options(width = 100)
+          pkgs <- .packages(TRUE)
+          sessioninfo::session_info(pkgs, include_base = TRUE)
         shell: Rscript {0}
