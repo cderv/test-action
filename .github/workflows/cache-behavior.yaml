@@ -18,8 +18,8 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
       - name: set Lib PATH
         run: 
-          - mkdir ${{ github.workspace}}/.packages
-          - echo "R_LIBS_USER=${{ github.workspace}}/.packages" >> $GITHUB_ENV
+          - mkdir $GITHUB_WORKSPACE/.packages
+          - echo "R_LIBS_USER=$GITHUB_WORKSPACE/.packages" >> $GITHUB_ENV
       - name: Cache R packages
         uses: actions/cache@v2
         with:
