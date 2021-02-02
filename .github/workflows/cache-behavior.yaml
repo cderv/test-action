@@ -20,7 +20,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-1-${{ hashFiles(format('{0}/**DESCRIPTION', env.R_LIBS_USER)) }}
+          key: ${{ runner.os }}-1-${{ hashFiles(format('{0}/**/DESCRIPTION', env.R_LIBS_USER)) }}
           restore-keys: ${{ runner.os }}-1-
       - name: Install pak and query dependencies
         run: |
