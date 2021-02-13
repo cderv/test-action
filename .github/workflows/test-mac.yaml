@@ -7,9 +7,9 @@ name: test-mac
 on: [workflow_dispatch]
 
 jobs:
-  using-r:
+  using-cran-lub:
     runs-on: macos-latest
-    name: Test cache storage
+    name: test lubridate
     steps:
       - uses: r-lib/actions/setup-r@v1
       - name: Install dep
@@ -17,8 +17,31 @@ jobs:
           install.packages("lubridate")
         shell: Rscript {0}
       - name: test command
+        env:
+          TZ: "America/Los_Angeles"
         run: |
           tz <- Sys.timezone()
+          tz
+          tz <- ifelse(is.na(tz), "UTC", tz)
+          tz
+          lubridate::mdy("12/22/22", tz = tz, quiet = TRUE)
+        shell: Rscript {0}
+  using-previous-lub:
+    runs-on: macos-latest
+    name: test lubridate
+    steps:
+      - uses: r-lib/actions/setup-r@v1
+      - name: Install dep
+        run: |
+          install.packages("remotes")
+          remotes::install_version("lubridate@1.7.9")
+        shell: Rscript {0}
+      - name: test command
+        env:
+          TZ: "America/Los_Angeles"
+        run: |
+          tz <- Sys.timezone()
+          tz
           tz <- ifelse(is.na(tz), "UTC", tz)
           tz
           lubridate::mdy("12/22/22", tz = tz, quiet = TRUE)
