@@ -34,7 +34,7 @@ jobs:
       - name: Install dep
         run: |
           install.packages("remotes")
-          remotes::install_version("lubridate@1.7.9")
+          remotes::install_version("lubridate", "1.7.9")
         shell: Rscript {0}
       - name: test command
         env:
