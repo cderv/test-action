@@ -1,0 +1,25 @@
+# This is a basic workflow to help you get started with Actions
+
+name: test-mac
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on: [workflow_dispatch]
+
+jobs:
+  using-r:
+    runs-on: macos-latest
+    name: Test cache storage
+    steps:
+      - uses: r-lib/actions/setup-r@v1
+      - name: Install dep
+        run: |
+          install.packages("lubridate")
+        shell: Rscript {0}
+      - name: test command
+        run: |
+          tz <- Sys.timezone()
+          tz <- ifelse(is.na(tz), "UTC", tz)
+          tz
+          lubridate::mdy("12/22/22", tz = tz, quiet = TRUE)
+        shell: Rscript {0}
