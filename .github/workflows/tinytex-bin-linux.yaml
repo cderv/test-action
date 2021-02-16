@@ -19,17 +19,7 @@ jobs:
           - { os: ubuntu-16.04}
     steps:
     - uses: r-lib/actions/setup-tinytex@v1
-    - run: tlmgr --version
-  install-tinytex-2:
-    runs-on: ${{ matrix.config.os }}
-    name: ${{ matrix.config.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-          config:
-          - { os: ubuntu-16.04}
-    steps:
-    - run: sudo apt install wget
-    - uses: r-lib/actions/setup-tinytex@v1
+      env: 
+        TINYTEX_VERSION: 2021-02
     - run: tlmgr --version
 
