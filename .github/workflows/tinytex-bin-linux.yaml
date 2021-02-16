@@ -1,0 +1,15 @@
+# This is a basic workflow to help you get started with Actions
+
+name: test-tinytex-bin-linux
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on: [workflow_dispatch]
+
+jobs:
+  install-tinytex:
+    runs_on: ubuntu-16.04
+    steps:
+    - uses: r-lib/actions/setup-tinytex@v1
+    - run: tlmgr --version
+
