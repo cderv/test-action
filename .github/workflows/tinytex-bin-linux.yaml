@@ -8,7 +8,14 @@ on: [workflow_dispatch]
 
 jobs:
   install-tinytex:
-    runs-on: ubuntu-16.04
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }}
+    strategy:
+      matrix:
+          config:
+          - { os: ubuntu-20.04}
+          - { os: ubuntu-18.04}
+          - { os: ubuntu-16.04}
     steps:
     - uses: r-lib/actions/setup-tinytex@v1
     - run: tlmgr --version
