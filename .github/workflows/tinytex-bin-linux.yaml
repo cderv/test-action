@@ -19,7 +19,5 @@ jobs:
           - { os: ubuntu-16.04}
     steps:
     - uses: r-lib/actions/setup-tinytex@v1
-      env: 
-        TINYTEX_VERSION: 2021.02
     - run: tlmgr --version
 
