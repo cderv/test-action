@@ -8,11 +8,19 @@ on:
   push:
     branches: [main]
     paths: .github/workflows/test.yaml
+  pull_request:
+    branches: [main]
+    paths: .github/workflows/test.yaml
 
 jobs:
   build:
     runs-on: ubuntu-latest
    
     steps:      
-      - name: Check tlmgr
-        run: ls ~
+      - name: See context value
+        run: |
+          echo "github.ref: ${{ github.ref }}"
+          echo "github.head_ref: ${{ github.head_ref }}"
+      - uses: actions/checkout@v2
+      - name: see git info
+        run: git status
