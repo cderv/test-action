@@ -1,9 +1,5 @@
-# This is a basic workflow to help you get started with Actions
-
 name: test
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the main branch
 on: 
   push:
     branches: [main]
@@ -22,5 +18,7 @@ jobs:
           echo "github.ref: ${{ github.ref }}"
           echo "github.head_ref: ${{ github.head_ref }}"
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref || github.ref }}
       - name: see git info
         run: git status
