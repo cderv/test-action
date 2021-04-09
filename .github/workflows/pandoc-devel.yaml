@@ -55,6 +55,12 @@ jobs:
           pandoc-version: ${{ matrix.config.pandoc }}
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
         if: matrix.config.pandoc == 'devel'
+      - name: Check Pandoc installation
+        run: |
+          echo $PATH
+          pandoc --version
+          echo "# Test" | pandoc -t html
+        shell: bash
       - name: Install deps
         run: install.packages("rmarkdown")
         shell: Rscript {0}
@@ -65,6 +71,3 @@ jobs:
       - name: Pandoc version
         run: rmarkdown::find_pandoc()
         shell: Rscript {0}
-      - name: Pandoc version on OS
-        run: pandoc --version
-        shell: bash
