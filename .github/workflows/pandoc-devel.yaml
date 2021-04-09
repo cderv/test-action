@@ -65,3 +65,6 @@ jobs:
       - name: Pandoc version
         run: rmarkdown::find_pandoc()
         shell: Rscript {0}
+      - name: Pandoc version on OS
+        run: pandoc --version
+        shell: bash
