@@ -16,6 +16,7 @@ jobs:
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
           pak::pak("rstudio/webshot2")
+          pak::pak("curl")
         shell: Rscript {0}
         
       - name: scrennshot
