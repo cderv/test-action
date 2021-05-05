@@ -17,6 +17,30 @@ jobs:
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
           pak::pak("rstudio/webshot2")
           pak::pak("curl")
+          pak::pak("xml2")
+        shell: Rscript {0}
+        
+      - name: chromote
+        run: |
+          library(chromote)
+          b <- ChromoteSession$new() 
+          b$Page$navigate("https://www.cowin.gov.in/home/")
+          b$Runtime$evaluate('document.querySelector("div.pin-search > input").focus()') %>% {
+            b$Input$insertText("201301")
+          } %>% {
+            b$Input$dispatchKeyEvent(
+              type = "keyDown", 
+              windowsVirtualKeyCode = 13, 
+              code = "Enter", 
+              key = "Enter", 
+              text = "\r", 
+              unmodifiedText = "\r"
+            )
+          }
+
+          z <- b$Runtime$evaluate('document.documentElement.outerHTML')
+          myhtml <- z$result$value
+          xml2::read_html(myhtml, "\n")
         shell: Rscript {0}
         
       - name: scrennshot
