@@ -1,0 +1,19 @@
+name: test-quarto
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+   
+    steps:      
+     - name: Install Quarto
+       env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+       run: |
+         # download the latest release
+         gh release download --repo quarto-dev/quarto-cli --pattern '*.deb'
+         # install it
+         sudo apt install ./*.deb
