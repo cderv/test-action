@@ -17,3 +17,6 @@ jobs:
          gh release download --repo quarto-dev/quarto-cli --pattern '*.deb'
          # install it
          sudo apt install ./*.deb
+
+     - name: quarto version
+       run: quarto --version
