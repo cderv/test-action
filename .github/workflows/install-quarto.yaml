@@ -7,13 +7,13 @@ name: test-quarto-setup
 on: [workflow_dispatch]
 
 jobs:
-#  pandoc-linux:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: cderv/install-quarto-action@main
-#      - run: |
-#          echo $PATH
-#          quarto --version
+  pandoc-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cderv/install-quarto-action@main
+      - run: |
+          echo $PATH
+          quarto --version
   pandoc-windows:
     runs-on: windows-latest
     steps:
@@ -22,10 +22,10 @@ jobs:
           $env:PATH
           quarto --version
         shell: powershell
-#  pandoc-macos:
-#    runs-on: macos-latest
-#    steps:
-#      - uses: cderv/install-quarto-action@main
-#      - run: |
-#          echo $PATH
-#          quarto --version
+  pandoc-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: cderv/install-quarto-action@main
+      - run: |
+          echo $PATH
+          quarto --version
