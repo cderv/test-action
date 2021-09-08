@@ -10,14 +10,14 @@ jobs:
   pandoc-linux:
     runs-on: ubuntu-latest
     steps:
-      - uses: cderv/install-quarto-action
+      - uses: cderv/install-quarto-action@main
       - run: |
           echo $PATH
           quarto --version
   pandoc-windows:
     runs-on: windows-latest
     steps:
-      - uses: cderv/install-quarto-action
+      - uses: cderv/install-quarto-action@main
       - run: |
           $env:PATH
           quarto --version
@@ -25,7 +25,7 @@ jobs:
   pandoc-macos:
     runs-on: macos-latest
     steps:
-      - uses: cderv/install-quarto-action
+      - uses: cderv/install-quarto-action@main
       - run: |
           echo $PATH
           quarto --version
