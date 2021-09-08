@@ -11,21 +11,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: cderv/install-quarto-action@main
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - run: |
           echo $PATH
           quarto --version
-  pandoc-windows:
-    runs-on: windows-latest
-    steps:
-      - uses: cderv/install-quarto-action@main
-      - run: |
-          $env:PATH
-          quarto --version
-        shell: powershell
-  pandoc-macos:
-    runs-on: macos-latest
-    steps:
-      - uses: cderv/install-quarto-action@main
-      - run: |
-          echo $PATH
-          quarto --version
+#  pandoc-windows:
+#    runs-on: windows-latest
+#    steps:
+#      - uses: cderv/install-quarto-action@main
+#      - run: |
+#          $env:PATH
+#          quarto --version
+#        shell: powershell
+#  pandoc-macos:
+#    runs-on: macos-latest
+#    steps:
+#      - uses: cderv/install-quarto-action@main
+#      - run: |
+#          echo $PATH
+#          quarto --version
