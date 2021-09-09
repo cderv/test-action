@@ -10,7 +10,7 @@ jobs:
   quarto-windows:
     runs-on: windows-latest
     env:
-      GITHUB_TOKEN: ${{ secret.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - run: |
           gh release download --repo quarto-dev/quarto-cli --pattern '*.msi' v0.2.144
