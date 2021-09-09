@@ -1,0 +1,18 @@
+# This is a basic workflow to help you get started with Actions
+
+name: test-quarto-msi-install
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on: [workflow_dispatch]
+
+jobs:
+  quarto-windows:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          gh release download --repo quarto-dev/quarto-cli --pattern '*.msi' v0.2.144
+          msiexec /i "quarto-0.2.144-win.msi" /passive
+      - run: |
+          $env:PATH
+          quarto --version
