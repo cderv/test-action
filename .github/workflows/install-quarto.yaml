@@ -7,27 +7,25 @@ name: test-quarto-setup
 on: [workflow_dispatch]
 
 jobs:
-#  quarto-linux:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: cderv/install-quarto-action@v1
-#      - run: |
-#          echo $PATH
-#          quarto --version
+  quarto-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cderv/install-quarto-action@v1
+      - run: |
+          echo $PATH
+          quarto --version
   quarto-windows:
     runs-on: windows-latest
     steps:
       - uses: cderv/install-quarto-action@v1
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
       - run: |
           $env:PATH
           quarto --version
         shell: powershell
-#  quarto-macos:
-#    runs-on: macos-latest
-#    steps:
-#      - uses: cderv/install-quarto-action@v1
-#      - run: |
-#          echo $PATH
-#          quarto --version
+  quarto-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: cderv/install-quarto-action@v1
+      - run: |
+          echo $PATH
+          quarto --version
