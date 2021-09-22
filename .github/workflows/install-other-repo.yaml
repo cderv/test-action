@@ -13,28 +13,6 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      # - uses: hmarr/debug-action@v2
-      - name: Determine branch name
-        id: check-branch
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          headref="${{ github.head_ref }}"
-          if [ -z "$headref" ]
-          then
-            echo '::debug::Not on pull request - using main ref branch'
-            branch=''
-          else
-            echo '::debug::On pull request'
-            branch=$(gh api repos/yihui/knitr-examples/branches | jq -cr '.[] | select(.name == '\"$headref\"') | .name')
-          fi
-          echo ::set-output name=ref::$(echo $branch)
-        shell: bash
-      - name: Retrieve knitr-examples
-        uses: actions/checkout@v2
-        with:
-          repository: yihui/knitr-examples
-          path: knitr-examples
-          ref: ${{ steps.check-branch.outputs.ref }}
-          clean: false
+      - name: Retrieve knitr example
+        uses: ./.github/actions/checkout-knitr-examples
       - run: ls -lisa
