@@ -13,6 +13,7 @@ jobs:
     strategy:
       fail-fast: false
     steps:
+      - uses: actions/checkout@v2
       - name: Retrieve knitr example
         uses: ./.github/actions/checkout-knitr-examples
       - run: ls -lisa
