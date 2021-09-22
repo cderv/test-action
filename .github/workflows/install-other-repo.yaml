@@ -26,7 +26,7 @@ jobs:
             branch=''
           else
             echo '::debug::On pull request'
-            branch=$(gh api repos/yihui/knitr-examples/branches | jq -cr '.[] | select(.name == $headref) | .name')
+            branch=$(gh api repos/yihui/knitr-examples/branches | jq -cr '.[] | select(.name == '\"$headref\"') | .name')
           fi
           echo ::set-output name=ref::$(echo $branch)
         shell: bash
