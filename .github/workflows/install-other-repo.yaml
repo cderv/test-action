@@ -14,7 +14,9 @@ jobs:
       fail-fast: false
     steps:
       # - uses: hmarr/debug-action@v2
-      - run: |
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
           branch=$(gh api repos/yihui/knitr-examples/branches | jq -cr '.[] | select(.name == "${{ github.head_ref }}") | .name')
           echo $branch
         shell: bash
