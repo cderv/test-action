@@ -19,7 +19,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          headref=${{ github.head_ref }}
+          headref="${{ github.head_ref }}"
           if [ -z "$headref" ]
           then
             echo '::debug::Not on pull request - using main ref branch'
