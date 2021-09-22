@@ -20,7 +20,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           branch=$(gh api repos/yihui/knitr-examples/branches | jq -cr '.[] | select(.name == "${{ github.head_ref }}") | .name')
-          ::set-output name=ref::$(echo $branch)
+          echo ::set-output name=ref::$(echo $branch)
         shell: bash
       - name: Retrieve knitr-examples
         uses: actions/checkout@v2
