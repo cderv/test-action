@@ -14,17 +14,19 @@ jobs:
       fail-fast: false
     steps:
       # - uses: hmarr/debug-action@v2
-      - env:
+      - name: Determine branch name
+        id: check-branch
+        env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch=$(gh api repos/yihui/knitr-examples/branches | jq -cr '.[] | select(.name == "mas") | .name')
-          echo $branch
+          branch=$(gh api repos/yihui/knitr-examples/branches | jq -cr '.[] | select(.name == "${{ github.head_ref }}") | .name')
+          ::set-output name=ref::$(echo $branch)
         shell: bash
-      # - name: Retrieve knitr-examples
-      #   uses: actions/checkout@v2
-      #   with:
-      #     repository: yihui/knitr-examples
-      #     path: knitr-examples
-      #     ref: ${{ github.head_ref }}
-      #     clean: false
+      - name: Retrieve knitr-examples
+        uses: actions/checkout@v2
+        with:
+          repository: yihui/knitr-examples
+          path: knitr-examples
+          ref: ${{ steps.check-branch.outputs.ref }}
+          clean: false
       - run: ls -lisa
