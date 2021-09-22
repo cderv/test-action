@@ -17,7 +17,7 @@ jobs:
       - env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch=$(gh api repos/yihui/knitr-examples/branches | jq -cr '.[] | select(.name == "${{ github.head_ref }}") | .name')
+          branch=$(gh api repos/yihui/knitr-examples/branches | jq -cr '.[] | select(.name == "mas") | .name')
           echo $branch
         shell: bash
       # - name: Retrieve knitr-examples
