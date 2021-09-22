@@ -1,0 +1,22 @@
+# This is a basic workflow to help you get started with Actions
+
+name: test-checkout-repo
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on: [workflow_dispatch]
+
+jobs:
+  using-r:
+    runs-on: ubuntu-20.04
+    name: checkout-repo
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Retrieve knitr-examples
+        uses: actions/checkout@v2
+        with:
+          repository: yihui/knitr-examples
+          path: knitr-examples
+          clean: false
+      - run: ls -lisa
