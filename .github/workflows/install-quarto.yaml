@@ -18,6 +18,8 @@ jobs:
       - run: |
           echo $PATH
           quarto tools install tinytex
+          quarto tools
+          which tlmgr
           echo $PATH
       - run: |
           echo $PATH
