@@ -17,7 +17,7 @@ jobs:
           quarto tools
       - run: |
           echo $PATH
-          quarto install tinytex
+          quarto tools install tinytex
           echo $PATH
       - run: |
           echo $PATH
