@@ -14,6 +14,15 @@ jobs:
       - run: |
           echo $PATH
           quarto --version
+          quarto tools
+      - run: |
+          echo $PATH
+          quarto install tinytex
+          echo $PATH
+      - run: |
+          echo $PATH
+          quarto tools
+          echo $PATH
   quarto-windows:
     runs-on: windows-latest
     steps:
