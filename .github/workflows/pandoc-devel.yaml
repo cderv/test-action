@@ -8,6 +8,7 @@ on: [workflow_dispatch]
 
 jobs:
   pandoc-linux:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
@@ -16,6 +17,7 @@ jobs:
           pandoc --version
           echo "# Test" | pandoc -t html
   pandoc-windows:
+    if: false
     runs-on: windows-latest
     steps:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
@@ -24,6 +26,7 @@ jobs:
           pandoc.exe --version
         shell: cmd
   pandoc-macos:
+    if: false
     runs-on: macos-latest
     steps:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
@@ -37,22 +40,22 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   pandoc: '2.9.2.1', r: 'release'}
-          - {os: macOS-latest, pandoc: '2.13',  r: 'release'}
-          - {os: macOS-latest, pandoc: '2.14.1',  r: 'release'}
-          - {os: macOS-latest, pandoc: '2.16',  r: 'release'}
-          - {os: macOS-latest, pandoc: '2.11.4',  r: 'release'}
+          # - {os: macOS-latest,   pandoc: '2.9.2.1', r: 'release'}
+          # - {os: macOS-latest, pandoc: '2.13',  r: 'release'}
+          # - {os: macOS-latest, pandoc: '2.14.1',  r: 'release'}
+          # - {os: macOS-latest, pandoc: '2.16',  r: 'release'}
+          # - {os: macOS-latest, pandoc: '2.11.4',  r: 'release'}
           - {os: windows-latest, pandoc: '2.13',  r: 'release'}
           - {os: windows-latest, pandoc: '2.14.1',  r: 'release'}
-          - {os: windows-latest, pandoc: '2.16',  r: 'release'}
+          - {os: windows-latest, pandoc: '2.16.0',  r: 'release'}
           - {os: windows-latest, pandoc: '2.11.4',  r: 'release'}
           - {os: windows-latest, pandoc: '2.9.2.1',  r: 'release'}
           - {os: windows-latest, pandoc: '2.7.3',   r: 'release'}
-          - {os: windows-latest, pandoc: 'devel',   r: 'release'}
+          # - {os: windows-latest, pandoc: 'devel',   r: 'release'}
           - {os: ubuntu-20.04,   pandoc: '2.14.1',    r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-20.04,   pandoc: '2.16',    r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-20.04,   pandoc: '2.11',    r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   pandoc: 'devel',   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          # - {os: ubuntu-20.04,   pandoc: 'devel',   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
     env: 
       RSPM: ${{ matrix.config.rspm }}
     steps:
