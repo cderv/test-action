@@ -47,7 +47,7 @@ jobs:
           # - {os: macOS-latest, pandoc: '2.11.4',  r: 'release'}
           - {os: windows-latest, pandoc: '2.13',  r: 'release'}
           - {os: windows-latest, pandoc: '2.14.1',  r: 'release'}
-          - {os: windows-latest, pandoc: '2.16.0',  r: 'release'}
+          - {os: windows-latest, pandoc: '2.16',  r: 'release'}
           - {os: windows-latest, pandoc: '2.11.4',  r: 'release'}
           - {os: windows-latest, pandoc: '2.9.2.1',  r: 'release'}
           - {os: windows-latest, pandoc: '2.7.3',   r: 'release'}
@@ -62,7 +62,7 @@ jobs:
       - uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.config.r }}
-      - uses: r-lib/actions/setup-pandoc@v1
+      - uses: cderv/actions/setup-pandoc@fix/pandoc-windows
         if: matrix.config.pandoc != 'devel'
         with:
           pandoc-version: ${{ matrix.config.pandoc }}
