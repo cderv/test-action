@@ -1,0 +1,21 @@
+# This is a basic workflow to help you get started with Actions
+
+name: test-install-ghostscript
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on: [workflow_dispatch]
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt-get install -y ghostscript
+  windows:
+    runs-on: windows-latest
+    steps:
+      - run: choco install ghostscript
+  macos:
+    runs-on: macos-latest
+    steps:
+      - run: brew install ghostscript
