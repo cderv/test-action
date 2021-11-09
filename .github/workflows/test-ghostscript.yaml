@@ -10,12 +10,15 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get install -y ghostscript
+      - uses: ./actions/install-ghostscript
+      - runs: ghostscript --version
   windows:
     runs-on: windows-latest
     steps:
-      - run: choco install ghostscript
+      - uses: ./actions/install-ghostscript
+      - runs: ghostscript --version
   macos:
     runs-on: macos-latest
     steps:
-      - run: brew install ghostscript
+      - uses: ./actions/install-ghostscript
+      - runs: ghostscript --version
