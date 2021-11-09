@@ -10,15 +10,21 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
       - uses: ./.github/actions/install-ghostscript
       - run: ghostscript --version
   windows:
     runs-on: windows-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
       - uses: ./.github/actions/install-ghostscript
       - run: ghostscript --version
   macos:
     runs-on: macos-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
       - uses: ./.github/actions/install-ghostscript
       - run: ghostscript --version
