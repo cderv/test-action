@@ -13,10 +13,10 @@ jobs:
     steps:
       - run: |
       echo "PR ?"
-      echo ${{ github.event.pull_request.head.repo.fork }}
+      echo "${{ github.event.pull_request.head.repo.fork }}"
       echo "COMMENT ?"
-      echo ${{ github.event.issue.pull_request }}
+      echo "${{ github.event.issue.pull_request }}"
       echo "startsWith ?"
-      echo ${{ startsWith(github.event.comment.body, '/render') }}
+      echo "${{ startsWith(github.event.comment.body, '/render') }}"
       echo "GLOBAL ?"
-      echo ${{ github.event.pull_request.head.repo.fork == false || (github.event.issue.pull_request && startsWith(github.event.comment.body, '/render')) }}
+      echo "${{ github.event.pull_request.head.repo.fork == false || (github.event.issue.pull_request && startsWith(github.event.comment.body, '/render')) }}"
