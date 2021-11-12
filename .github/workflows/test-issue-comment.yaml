@@ -32,4 +32,4 @@ jobs:
           echo "startsWith ?"
           echo "${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '/render') }}"
           echo "GLOBAL ?"
-          echo "${{ github.event.pull_request.head.repo.fork false || (github.event.issue.pull_request && startsWith(github.event.comment.body, '/render')) }}"
+          echo "${{ github.event.pull_request.head.repo.fork == false || (github.event.issue.pull_request && startsWith(github.event.comment.body, '/render')) }}"
