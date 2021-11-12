@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: test-isuse comment
+name: test-issue comment
 
 on:
   issue_comment:
@@ -13,10 +13,10 @@ jobs:
     steps:
       - run: |
           echo 'PR ?'
-          echo '${{ github.event.pull_request.head.repo.fork }}'
+          echo '${{ github.event.pull_request.head.repo.fork == false }}'
           echo 'COMMENT ?'
           echo '${{ github.event.issue.pull_request }}'
           echo 'startsWith ?'
-          echo '${{ startsWith(github.event.comment.body, '/render') }}'
+          echo '${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '/render') }}'
           echo 'GLOBAL ?'
           echo '${{ github.event.pull_request.head.repo.fork == false || (github.event.issue.pull_request && startsWith(github.event.comment.body, '/render')) }}'
