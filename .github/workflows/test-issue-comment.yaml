@@ -10,6 +10,8 @@ jobs:
   infos:
     runs-on: macos-latest
     name: test issue comment
+    env:
+      isFork: ${{ github.event.pull_request.head.repo.fork }}
     steps:
       - run: |
           echo "dummy ?"
@@ -23,9 +25,10 @@ jobs:
           echo "${{ github.event.pull_request.head.repo.fork == true }}"
           echo "${{ ! github.event.pull_request.head.repo.fork == true }}"
           echo "${{ github.event.pull_request.head.repo.fork == '' }}"
+          echo "${{ env.isFork }}"
           echo "COMMENT ?"
           echo "${{ github.event.issue.pull_request }}"
           echo "startsWith ?"
           echo "${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '/render') }}"
           echo "GLOBAL ?"
-          echo "${{ github.event.pull_request.head.repo.fork == false || (github.event.issue.pull_request && startsWith(github.event.comment.body, '/render')) }}"
+          echo "${{ github.event.pull_request.head.repo.fork false || (github.event.issue.pull_request && startsWith(github.event.comment.body, '/render')) }}"
