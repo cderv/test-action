@@ -10,14 +10,14 @@ jobs:
   quarto-linux:
     runs-on: ubuntu-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@no-gh
+      - uses: quarto-dev/quarto-actions/install-quarto@main
       - run: |
           echo $PATH
           quarto --version
   quarto-linux-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@no-gh
+      - uses: quarto-dev/quarto-actions/install-quarto@main
         with:
           version: 0.3.71
       - run: |
@@ -26,7 +26,7 @@ jobs:
   quarto-windows:
     runs-on: windows-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@no-gh
+      - uses: quarto-dev/quarto-actions/install-quarto@main
       - run: |
           $env:PATH
           quarto --version
@@ -34,7 +34,7 @@ jobs:
   quarto-windows-version:
     runs-on: windows-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@no-gh
+      - uses: quarto-dev/quarto-actions/install-quarto@main
         with:
           version: 0.3.71
       - run: |
@@ -44,14 +44,14 @@ jobs:
   quarto-macos:
     runs-on: macos-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@no-gh
+      - uses: quarto-dev/quarto-actions/install-quarto@main
       - run: |
           echo $PATH
           quarto --version
   quarto-macos-version:
     runs-on: macos-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@no-gh
+      - uses: quarto-dev/quarto-actions/install-quarto@main
         with:
           version: 0.3.71
       - run: |
