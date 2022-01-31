@@ -13,8 +13,8 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - run: |
-          gh release download --repo quarto-dev/quarto-cli --pattern '*.msi' v0.2.144
-          msiexec /i "quarto-0.2.144-win.msi" /passive
+          gh release download --repo quarto-dev/quarto-cli --pattern '*.msi' v0.3.73
+          msiexec /i "quarto-0.3.73-win.msi" /passive
       - run: |
           $env:PATH
           quarto --version
