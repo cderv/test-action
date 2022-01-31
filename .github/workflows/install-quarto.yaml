@@ -10,47 +10,23 @@ jobs:
   quarto-linux:
     runs-on: ubuntu-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@quarto-version
+      - uses: quarto-dev/quarto-actions/install-quarto@no-gh
       - run: |
           echo $PATH
           quarto --version
-          quarto tools
-      - run: |
-          echo $PATH
-          quarto tools install tinytex
-          quarto tools
-      - run: |
-          which tlmgr
-          echo $PATH
-      - run: |
-          echo $PATH
-          quarto tools
-          echo $PATH
   quarto-linux-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@quarto-version
+      - uses: quarto-dev/quarto-actions/install-quarto@no-gh
         with:
           version: 0.3.71
       - run: |
           echo $PATH
           quarto --version
-          quarto tools
-      - run: |
-          echo $PATH
-          quarto tools install tinytex
-          quarto tools
-      - run: |
-          which tlmgr
-          echo $PATH
-      - run: |
-          echo $PATH
-          quarto tools
-          echo $PATH
   quarto-windows:
     runs-on: windows-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@quarto-version
+      - uses: quarto-dev/quarto-actions/install-quarto@no-gh
       - run: |
           $env:PATH
           quarto --version
@@ -58,7 +34,7 @@ jobs:
   quarto-windows-version:
     runs-on: windows-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@quarto-version
+      - uses: quarto-dev/quarto-actions/install-quarto@no-gh
         with:
           version: 0.3.71
       - run: |
@@ -68,14 +44,14 @@ jobs:
   quarto-macos:
     runs-on: macos-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@quarto-version
+      - uses: quarto-dev/quarto-actions/install-quarto@no-gh
       - run: |
           echo $PATH
           quarto --version
   quarto-macos-version:
     runs-on: macos-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@quarto-version
+      - uses: quarto-dev/quarto-actions/install-quarto@no-gh
         with:
           version: 0.3.71
       - run: |
