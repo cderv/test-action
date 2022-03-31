@@ -32,7 +32,7 @@ jobs:
       - run: |
           echo $PATH
           quarto --version
-          quarto tools infos tinytex
+          quarto tools info tinytex
           tlmgr --version
   quarto-windows:
     runs-on: windows-latest
@@ -61,7 +61,7 @@ jobs:
       - run: |
           $env:PATH
           quarto --version
-          quarto tools infos tinytex
+          quarto tools info tinytex
           tlmgr --version
         shell: powershell
   quarto-macos:
@@ -89,5 +89,5 @@ jobs:
       - run: |
           echo $PATH
           quarto --version
-          quarto tools infos tinytex
+          quarto tools info tinytex
           tlmgr --version
