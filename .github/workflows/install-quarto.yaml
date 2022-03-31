@@ -23,6 +23,17 @@ jobs:
       - run: |
           echo $PATH
           quarto --version
+  quarto-linux-latex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: quarto-dev/quarto-actions/install-quarto@install-latex
+        with:
+          tinytex: true
+      - run: |
+          echo $PATH
+          quarto --version
+          quarto tools infos tinytex
+          tlmgr --version
   quarto-windows:
     runs-on: windows-latest
     steps:
@@ -41,6 +52,18 @@ jobs:
           $env:PATH
           quarto --version
         shell: powershell
+  quarto-windows-latex:
+    runs-on: windows-latest
+    steps:
+      - uses: quarto-dev/quarto-actions/install-quarto@install-latex
+        with:
+          tinytex: true
+      - run: |
+          $env:PATH
+          quarto --version
+          quarto tools infos tinytex
+          tlmgr --version
+        shell: powershell
   quarto-macos:
     runs-on: macos-latest
     steps:
@@ -57,3 +80,14 @@ jobs:
       - run: |
           echo $PATH
           quarto --version
+  quarto-macos-latex:
+    runs-on: macos-latest
+    steps:
+      - uses: quarto-dev/quarto-actions/install-quarto@install-latex
+        with:
+          tinytex: true
+      - run: |
+          echo $PATH
+          quarto --version
+          quarto tools infos tinytex
+          tlmgr --version
