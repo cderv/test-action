@@ -3,14 +3,9 @@ name: test
 on: [workflow_dispatch]
 
 jobs:
-  powershell:
-    runs-on: windows-latest
-    steps:      
-      - name: curl in powershell
-        run: curl --version
   bash:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:      
       - name: curl in bash
-        run: curl --version
+        run: gh --version
         shell: bash
