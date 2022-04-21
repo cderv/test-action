@@ -9,6 +9,6 @@ jobs:
       - run: gh --version
         
       - name: update
-        run: brew upgrade gh
+        run: brew install gh
 
       - run: gh --version
