@@ -1,24 +1,16 @@
 name: test
 
-on: 
-  push:
-    branches: [main]
-    paths: .github/workflows/test.yaml
-  pull_request:
-    branches: [main]
-    paths: .github/workflows/test.yaml
+on: [workflow_dispatch]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-   
+  powershell:
+    runs-on: windows-latest
     steps:      
-      - name: See context value
-        run: |
-          echo "github.ref: ${{ github.ref }}"
-          echo "github.head_ref: ${{ github.head_ref }}"
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref || github.ref }}
-      - name: see git info
-        run: git status
+      - name: curl in powershell
+        run: curl --version
+  bash:
+    runs-on: windows-latest
+    steps:      
+      - name: curl in bash
+        run: curl --version
+        shell: bash
