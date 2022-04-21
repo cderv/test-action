@@ -6,6 +6,9 @@ jobs:
   bash:
     runs-on: ubuntu-latest
     steps:      
-      - name: curl in bash
-        run: gh --version
-        shell: bash
+      - run: gh --version
+        
+      - name: update
+        run: brew upgrade gh
+
+      - run: gh --version
