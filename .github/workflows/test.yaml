@@ -9,6 +9,8 @@ jobs:
       - run: gh --version
         
       - name: update
-        run: brew install gh
+        run: |
+          sudo apt-get update
+          sudo apt-get upgrade gh
 
       - run: gh --version
