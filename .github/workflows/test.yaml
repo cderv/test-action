@@ -10,7 +10,6 @@ jobs:
         
       - name: update
         run: |
-          sudo apt-get update
-          sudo apt-get upgrade gh
+          gh release download -R cli/cli
 
-      - run: gh --version
+      - run: ./gh --version
