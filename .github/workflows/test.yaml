@@ -27,6 +27,8 @@ jobs:
       - run: gh --version
         
       - name: update
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release download -R cli/cli --pattern '*linux_386.deb'
           sudo dpkg -i $(ls *.deb)
