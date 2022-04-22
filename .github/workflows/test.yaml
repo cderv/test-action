@@ -30,7 +30,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release download -R cli/cli --pattern '*linux_386.deb'
+          gh release download -R cli/cli --pattern '*linux_amd64.deb'
           sudo dpkg -i $(ls *.deb)
 
       - run: which gh
