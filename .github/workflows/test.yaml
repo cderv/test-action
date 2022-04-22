@@ -9,6 +9,8 @@ jobs:
       - run: gh --version
         
       - name: update
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release download -R cli/cli
 
