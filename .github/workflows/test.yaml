@@ -9,9 +9,11 @@ jobs:
       - run: gh --version
         
       - name: update
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release download -R cli/cli
+          brew install gh
 
-      - run: ./gh --version
+      - run: which gh
+
+      - run: brew --prefix gh
+
+      - run: $(brew --prefix gh) --version
