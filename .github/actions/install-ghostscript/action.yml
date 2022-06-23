@@ -15,6 +15,7 @@ runs:
             echo "empty "
           fi
           echo "${{ inputs.who-to-greet }}"
+        shell: bash
       - if: ${{ runner.os == 'Linux' }}
         run: sudo apt-get install -y ghostscript
         shell: bash
