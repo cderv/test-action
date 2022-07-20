@@ -10,23 +10,32 @@ jobs:
   quarto-linux:
     runs-on: ubuntu-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@main
+      - uses: quarto-dev/quarto-action/setup@prerelease-support
       - run: |
           echo $PATH
           quarto --version
   quarto-linux-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@main
+      - uses: quarto-dev/quarto-action/setup@prerelease-support
         with:
           version: 0.3.71
+      - run: |
+          echo $PATH
+          quarto --version
+  quarto-linux-prerelease:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: quarto-dev/quarto-action/setup@prerelease-support
+        with:
+          version: 'pre-release'
       - run: |
           echo $PATH
           quarto --version
   quarto-linux-latex:
     runs-on: ubuntu-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@main
+      - uses: quarto-dev/quarto-action/setup@prerelease-support
         with:
           tinytex: true
       - run: |
@@ -37,7 +46,7 @@ jobs:
   quarto-windows:
     runs-on: windows-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@main
+      - uses: quarto-dev/quarto-action/setup@prerelease-support
       - run: |
           $env:PATH
           quarto --version
@@ -45,7 +54,7 @@ jobs:
   quarto-windows-version:
     runs-on: windows-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@main
+      - uses: quarto-dev/quarto-action/setup@prerelease-support
         with:
           version: 0.3.71
       - run: |
@@ -55,7 +64,7 @@ jobs:
   quarto-windows-latex:
     runs-on: windows-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@main
+      - uses: quarto-dev/quarto-action/setup@prerelease-support
         with:
           tinytex: true
       - run: |
@@ -67,23 +76,32 @@ jobs:
   quarto-macos:
     runs-on: macos-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@main
+      - uses: quarto-dev/quarto-action/setup@prerelease-support
       - run: |
           echo $PATH
           quarto --version
   quarto-macos-version:
     runs-on: macos-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@main
+      - uses: quarto-dev/quarto-action/setup@prerelease-support
         with:
           version: 0.3.71
+      - run: |
+          echo $PATH
+          quarto --version
+  quarto-macos-prerelease:
+    runs-on: macos-latest
+    steps:
+      - uses: quarto-dev/quarto-action/setup@prerelease-support
+        with:
+          version: 'pre-release'
       - run: |
           echo $PATH
           quarto --version
   quarto-macos-latex:
     runs-on: macos-latest
     steps:
-      - uses: quarto-dev/quarto-actions/install-quarto@main
+      - uses: quarto-dev/quarto-action/setup@prerelease-support
         with:
           tinytex: true
       - run: |
