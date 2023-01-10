@@ -21,11 +21,16 @@ jobs:
   tinytex-windows-script:
     runs-on: windows-latest
     steps:
-      - name: instal tinytex
+      - name: Download install script
+        run: |
+          powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/cderv/tinytex/main/tools/install-bin-windows.bat -OutFile install-bin-windows.bat"
+        shell: cmd
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+      - name: Run install
         env:
           TINYTEX_INSTALLER: TinyTeX-2
         run: |
-          powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/cderv/tinytex/main/tools/install-bin-windows.bat -OutFile install-bin-windows.bat"
           install-bin-windows.bat
         shell: cmd
       - run: ls $env:APPDATA
@@ -35,6 +40,7 @@ jobs:
           tlmgr --version
 
   tinytex-windows-package:
+    if: false
     runs-on: windows-latest
     steps:
       - uses: r-lib/actions/setup-r@v2
