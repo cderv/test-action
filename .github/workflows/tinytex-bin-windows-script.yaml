@@ -51,10 +51,10 @@ jobs:
         run: |
           tinytex::install_tinytex(bundle = "TinyTeX-2", version= "daily-github")
         shell: Rscript {0}
-      - run: ls $env:APPDATA
+      - run: ls $APPDATA
         shell: bash
       - name: check tlmgr installation
         run: |
-          echo $env:PATH
+          echo $PATH
           tlmgr --version
         shell: bash
