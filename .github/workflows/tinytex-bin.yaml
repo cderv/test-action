@@ -7,24 +7,65 @@ name: test-tinytex-bin
 on: [workflow_dispatch]
 
 jobs:
-  tinytex-linux:
-    runs-on: ubuntu-latest
+  tinytex-windows-action:
+    if: false
+    strategy:
+      fail-fast: false
+      matrix:
+        bundle: [TinyTeX, TinyTeX-1, TinyTeX-2, tinitex]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-      - uses: cderv/actions/setup-tinytex-bin@tinytex-bin
-      - run: |
-          echo $PATH
+      - uses: r-lib/actions/setup-tinytex@v2
+        env:
+          TINYTEX_INSTALLER: ${{ matrix.bundle}}
+      - name: check tlmgr installation
+        run: |
+          echo $env:PATH
           tlmgr --version
-  tinytex-windows:
+        shell: bash
+        
+  tinytex-windows-script:
+    strategy:
+      fail-fast: false
+      matrix:
+        bundle: [TinyTeX, TinyTeX-1, TinyTeX-2, tinitex]
     runs-on: windows-latest
     steps:
-      - uses: cderv/actions/setup-tinytex-bin@tinytex-bin
-      - run: |
-          echo $PATH
+      - name: install tinytex
+        env:
+          TINYTEX_INSTALLER: ${{ matrix.bundle }}
+        run: |
+          powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/cderv/tinytex/main/tools/install-bin-windows.bat -OutFile install-bin-windows.bat"
+          install-bin-windows.bat
+        shell: cmd
+      - run: ls $env:APPDATA
+      - name: check tlmgr installation
+        run: |
+          echo $env:PATH
           tlmgr --version
-  tinytex-macos:
-    runs-on: macos-latest
+
+  tinytex-windows-package:
+    strategy:
+      fail-fast: false
+      matrix:
+        bundle: [TinyTeX, TinyTeX-1, TinyTeX-2, tinitex]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.bundle }} - ${{ matrix.os }}
     steps:
-      - uses: cderv/actions/setup-tinytex-bin@tinytex-bin
-      - run: |
-          echo $PATH
+      - uses: r-lib/actions/setup-r@v2
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: cderv/tinytex
+      - name: install tinytex
+        run: |
+          tinytex::install_tinytex(bundle = "${{ matrix.bundle }}", version= "daily-github")
+        shell: Rscript {0}
+      - run: ls $env:APPDATA
+        shell: bash
+      - name: check tlmgr installation
+        run: |
+          echo $env:PATH
           tlmgr --version
+        shell: bash
