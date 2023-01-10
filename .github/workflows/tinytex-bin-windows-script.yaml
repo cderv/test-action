@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: instal tinytex
         env:
-          TINYTEX_INSTALLER: TinyTeX
+          TINYTEX_INSTALLER: TinyTeX-2
         run: |
           powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/yihui/tinytex/new-pwsh-download-method/tools/install-bin-windows.bat -OutFile install-bin-windows.bat"
           install-bin-windows.bat
@@ -33,3 +33,22 @@ jobs:
         run: |
           echo $env:PATH
           tlmgr --version
+
+  tinytex-windows-package:
+    runs-on: windows-latest
+    steps:
+      - uses: r-lib/actions/setup-r@v2
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: cderv/tinytex
+      - name: install tinytex
+        run: |
+          tinytex::install_tinytex(bundle = "TinyTeX-2", version= "daily-github")
+        shell: Rscript {0}
+      - run: ls $env:APPDATA
+        shell: bash
+      - name: check tlmgr installation
+        run: |
+          echo $env:PATH
+          tlmgr --version
+        shell: bash
