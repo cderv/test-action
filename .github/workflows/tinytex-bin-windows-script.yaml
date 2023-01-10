@@ -25,7 +25,7 @@ jobs:
         env:
           TINYTEX_INSTALLER: TinyTeX-2
         run: |
-          powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/yihui/tinytex/new-pwsh-download-method/tools/install-bin-windows.bat -OutFile install-bin-windows.bat"
+          powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/cderv/tinytex/main/tools/install-bin-windows.bat -OutFile install-bin-windows.bat"
           install-bin-windows.bat
         shell: cmd
       - run: ls $env:APPDATA
