@@ -18,10 +18,11 @@ jobs:
       - uses: r-lib/actions/setup-tinytex@v2
         env:
           TINYTEX_INSTALLER: ${{ matrix.bundle}}
+      - run: echo $PATH
+        shell: bash
       - name: check tlmgr installation
         run: |
-          echo $env:PATH
-          tlmgr --version
+          which tlmgr
         shell: bash
         
   tinytex-windows-script:
@@ -63,8 +64,9 @@ jobs:
         shell: Rscript {0}
       - run: ls $env:APPDATA
         shell: bash
+      - run: echo $PATH
+        shell: bash
       - name: check tlmgr installation
         run: |
-          echo $env:PATH
-          tlmgr --version
+          which tlmgr
         shell: bash
