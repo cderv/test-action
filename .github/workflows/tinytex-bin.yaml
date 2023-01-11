@@ -69,18 +69,10 @@ jobs:
         run: |
           tinytex::install_tinytex(bundle = "${{ matrix.bundle }}", version= "daily-github")
         shell: Rscript {0}
-      - run: ls $APPDATA
-        shell: bash
-      - run: echo $PATH
-        shell: bash
       - name: check tlmgr installation
         run: |
-          case $RUNNER_OS in
-           "Windows")
-              tlmgr.bat --version
-              ;;
-            *)
-              tlmgr --version
-              ;;
-          esac
-        shell: bash
+          tinytex::tinytex_root()
+          tinytex::is_tinytex()
+          tinytex:::find_tlmgr()
+          tinytex::tlmgr("--version")
+        shell: Rscript {0}
