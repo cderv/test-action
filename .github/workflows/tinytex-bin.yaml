@@ -8,7 +8,6 @@ on: [workflow_dispatch]
 
 jobs:
   tinytex-action:
-    if: false
     strategy:
       fail-fast: false
       matrix:
