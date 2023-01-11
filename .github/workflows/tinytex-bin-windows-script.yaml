@@ -35,7 +35,7 @@ jobs:
       - name: check tlmgr installation
         run: |
           echo $env:PATH
-          tlmgr --version
+          $env:APPDATA/TinyTeX/bin/win32/tlmgr --version
 
   tinytex-windows-package:
     if: false
