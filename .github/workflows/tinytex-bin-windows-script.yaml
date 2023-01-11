@@ -23,10 +23,8 @@ jobs:
     steps:
       - name: Download install script
         run: |
-          powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/cderv/tinytex/main/tools/install-bin-windows.bat -OutFile install-bin-windows.bat"
-        shell: cmd
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+          Invoke-WebRequest https://raw.githubusercontent.com/cderv/tinytex/main/tools/install-bin-windows.bat -OutFile install-bin-windows.bat
+        shell: pwsh
       - name: Run install
         env:
           TINYTEX_INSTALLER: TinyTeX-2
