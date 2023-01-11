@@ -22,7 +22,14 @@ jobs:
         shell: bash
       - name: check tlmgr installation
         run: |
-          which tlmgr
+          case $RUNNER_OS in
+           "Windows")
+              tlmgr.bat --version
+              ;;
+            *)
+              tlmgr --version
+              ;;
+          esac
         shell: bash
         
   tinytex-windows-script:
@@ -68,5 +75,12 @@ jobs:
         shell: bash
       - name: check tlmgr installation
         run: |
-          which tlmgr
+          case $RUNNER_OS in
+           "Windows")
+              tlmgr.bat --version
+              ;;
+            *)
+              tlmgr --version
+              ;;
+          esac
         shell: bash
