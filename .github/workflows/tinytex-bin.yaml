@@ -69,7 +69,7 @@ jobs:
         run: |
           tinytex::install_tinytex(bundle = "${{ matrix.bundle }}", version= "daily-github")
         shell: Rscript {0}
-      - run: ls $env:APPDATA
+      - run: ls $APPDATA
         shell: bash
       - run: echo $PATH
         shell: bash
