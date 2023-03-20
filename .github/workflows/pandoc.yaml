@@ -10,7 +10,7 @@ jobs:
   pandoc-linux:
     runs-on: ubuntu-latest
     steps:
-      - uses: r-lib/actions/setup-pandoc@main
+      - uses: r-lib/actions/setup-pandoc@v2
         with:
           pandoc-version: 2.7.3
       - name: Setup tmate session
@@ -23,7 +23,7 @@ jobs:
     if: false
     runs-on: windows-latest
     steps:
-      - uses: r-lib/actions/setup-pandoc@main
+      - uses: r-lib/actions/setup-pandoc@v2
       - run: |
           echo %PATH%
           pandoc.exe --version
@@ -32,7 +32,7 @@ jobs:
     if: false
     runs-on: macos-latest
     steps:
-      - uses: r-lib/actions/setup-pandoc@main
+      - uses: r-lib/actions/setup-pandoc@v2
       - run: |
           echo $PATH
           pandoc --version
