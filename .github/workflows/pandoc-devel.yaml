@@ -56,10 +56,10 @@ jobs:
     env: 
       RSPM: ${{ matrix.config.rspm }}
     steps:
-      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-r@main
         with:
           r-version: ${{ matrix.config.r }}
-      - uses: r-lib/actions/setup-pandoc@074fdb0200fdf5757756d4ba665339271ae3555d
+      - uses: r-lib/actions/setup-pandoc@main
         if: matrix.config.pandoc != 'devel'
         with:
           pandoc-version: ${{ matrix.config.pandoc }}
