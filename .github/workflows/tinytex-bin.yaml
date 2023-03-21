@@ -43,7 +43,7 @@ jobs:
         env:
           TINYTEX_INSTALLER: ${{ matrix.bundle }}
         run: |
-          powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/cderv/tinytex/main/tools/install-bin-windows.bat -OutFile install-bin-windows.bat"
+          powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/yihui/tinytex/main/tools/install-bin-windows.bat -OutFile install-bin-windows.bat"
           install-bin-windows.bat
         shell: cmd
       - run: ls $env:APPDATA
