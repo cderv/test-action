@@ -15,7 +15,7 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Render Quarto Project
-        uses: quarto-dev/quarto-actions/render@v2
+        uses: quarto-dev/quarto-actions/render@main
         with: 
           path: ${{ github.workspace }}/quarto/quarto-project
   build-deploy-2:
@@ -28,7 +28,7 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Render Quarto Project
-        uses: quarto-dev/quarto-actions/render@v2
+        uses: quarto-dev/quarto-actions/render@main
         with: 
           path: ${{ github.workspace }}/quarto/quarto-project
   build-deploy-3:
@@ -41,6 +41,6 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Render Quarto Project
-        uses: quarto-dev/quarto-actions/render@v2
+        uses: quarto-dev/quarto-actions/render@main
         with: 
           path: ${{ github.workspace }}/quarto/quarto-project
