@@ -17,7 +17,7 @@ jobs:
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@main
         with: 
-          path: ${{ github.workspace }}/quarto/quarto-project
+          path: quarto/quarto-project
   build-deploy-2:
     runs-on: windows-latest
     steps:
@@ -30,7 +30,7 @@ jobs:
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@main
         with: 
-          path: ${{ github.workspace }}/quarto/quarto-project
+          path: quarto/quarto-project
   build-deploy-3:
     runs-on: macos-latest
     steps:
@@ -43,4 +43,4 @@ jobs:
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@main
         with: 
-          path: ${{ github.workspace }}/quarto/quarto-project
+          path: quarto/quarto-project
