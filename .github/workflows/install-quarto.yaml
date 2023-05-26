@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: cscheid/quarto-actions/setup@main
         with:
-          version: 0.3.71
+          version: 1.4.87
       - run: |
           echo $PATH
           quarto --version
@@ -56,7 +56,7 @@ jobs:
     steps:
       - uses: cscheid/quarto-actions/setup@main
         with:
-          version: 0.3.71
+          version: 1.4.87
       - run: |
           $env:PATH
           quarto --version
@@ -95,7 +95,7 @@ jobs:
     steps:
       - uses: cscheid/quarto-actions/setup@main
         with:
-          version: 0.3.71
+          version: 1.4.87
       - run: |
           echo $PATH
           quarto --version
