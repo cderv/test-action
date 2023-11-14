@@ -1,5 +1,4 @@
 # This is a basic workflow to help you get started with Actions
-
 name: test-typst-cache
 
 # Controls when the action will run. Triggers the workflow on push or pull request
@@ -17,7 +16,7 @@ jobs:
       - uses: quarto-dev/quarto-actions/setup@main
         with:
           version: pre-release
-      - uses: quarto-dev/quarto-cli/.github/workflows/actions/cache-typst@gha/cache-typst-package
+      - uses: quarto-dev/quarto-cli/.github/actions/cache-typst@gha/cache-typst-package
       - run: |
           quarto typst compile resources/demo.typ
           
