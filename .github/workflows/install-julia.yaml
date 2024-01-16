@@ -15,7 +15,7 @@ jobs:
         shell: powershell
       - run: |
             echo "." >> $env:GITHUB_PATH
-        shell: pwzh
+        shell: pwsh
       - run: $env:PATH -Split ";"
         shell: powershell
       - run: gcm tar
