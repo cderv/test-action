@@ -7,15 +7,18 @@ jobs:
     name: Test Julia install on windows
     steps:
       - uses: actions/checkout@v4
-      - run: which tar
-        shell: bash
-      - run: where tar
-        shell: cmd
       - run: gcm tar
         shell: powershell
       - run: echo $PATH
         shell: bash
       - run: $env:PATH -Split ";"
+        shell: powershell
+      - run: |
+            echo "." >> $env:GITHUB_PATH
+        shell: pwzh
+      - run: $env:PATH -Split ";"
+        shell: powershell
+      - run: gcm tar
         shell: powershell
       - uses: julia-actions/setup-julia@v1
         with:
