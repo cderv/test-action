@@ -1,0 +1,13 @@
+name: test-julia-install
+on: [workflow_dispatch]
+
+jobs:
+  install:
+    runs-on: windows-latest
+    name: Test Julia install on windows
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.10'
+      - run: julia -e 'println("Hello, World!")'  
