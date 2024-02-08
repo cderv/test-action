@@ -23,5 +23,5 @@ jobs:
           ../../texlive/bin/*/tlmgr path add
           ../../texlive/bin/*/tlmgr option sys_bin
           echo $PATH
-          ls -lisa /usr/local/bin
+          ls -lisa /home/runner/bin
           which tlgmr
