@@ -15,7 +15,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: cderv/actions/setup-tinytex@tinytex-2023
+      - uses: r-lib/actions/setup-tinytex@v2
         env:
           TINYTEX_INSTALLER: ${{ matrix.bundle}}
       - run: echo $PATH
