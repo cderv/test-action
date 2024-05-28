@@ -25,9 +25,6 @@ jobs:
       # use tmate debugging action
       - name: Debugging with tmate
         uses: mxschmitt/action-tmate@v3
-        with:
-          # Print the URL to the runner output
-          print-url: true
 
       - name: Configure Quarto (.ps1)
         if: runner.os == 'Windows'
