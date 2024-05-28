@@ -1,0 +1,30 @@
+# This is a basic workflow to help you get started with Actions
+
+name: test-quarto-build
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on: [workflow_dispatch]
+
+jobs:
+  quarto-linux:
+    runs-on: ubuntu-latest
+    if: false
+    steps:
+      - uses: quarto-dev/quarto-actions/setup@main
+      - run: |
+          echo $PATH
+          quarto --version
+  quarto-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: quarto-dev/quarto-cli
+
+      - name: Configure Quarto (.ps1)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          ./configure.cmd
+          "$(Get-ChildItem -Path ./package/dist/bin/quarto.cmd | %{ $_.FullName } | Split-Path)" >> $env:GITHUB_PATH
