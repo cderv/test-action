@@ -1,0 +1,32 @@
+on:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      prerelease:
+        required: true
+        description: 'Whether to deploy prerelease or release site'
+        type: boolean
+        default: false
+
+name: Quarto Publish
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - if: inputs.prerelease
+        run: |
+          echo "${{ inputs.prerelease }}"
+          echo "${{ fromJson(inputs.prerelease) }}"
+          echo "${{ fromJson(inputs) }}"
+      - if: inputs
+        run: |
+          echo "${{ inputs.prerelease }}"
+          echo "${{ fromJson(inputs.prerelease) }}"
+          echo "${{ fromJson(inputs) }}"
+      - if: fromJson(inputs)
+        run: |
+          echo "${{ inputs.prerelease == false }}"
+          echo "${{ fromJson(inputs.prerelease) }}"
+          echo "${{ fromJson(inputs) }}"
