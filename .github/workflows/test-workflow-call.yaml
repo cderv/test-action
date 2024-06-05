@@ -20,13 +20,9 @@ jobs:
           echo "${{ inputs.prerelease }}"
           echo "${{ fromJson(inputs.prerelease) }}"
           echo "${{ fromJson(inputs) }}"
-      - if: inputs
+      - if: fromJson(inputs.prerelease)
         run: |
-          echo "${{ inputs.prerelease }}"
-          echo "${{ fromJson(inputs.prerelease) }}"
-          echo "${{ fromJson(inputs) }}"
-      - if: fromJson(inputs)
+          echo "${{ toJson(inputs) }}"
+      - if: inputs.prerelease == false
         run: |
-          echo "${{ inputs.prerelease == false }}"
-          echo "${{ fromJson(inputs.prerelease) }}"
-          echo "${{ fromJson(inputs) }}"
+          echo "${{ toJson(inputs) }}"
