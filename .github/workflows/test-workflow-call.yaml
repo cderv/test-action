@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - if: inputs.prerelease
+      - if: (inputs.prerelease != null && inputs.prerelease) || github.event_name == 'workflow_dispatch'
         run: |
           echo "${{ toJson(inputs) }}"
       - if: inputs.prerelease == null
