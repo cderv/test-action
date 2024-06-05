@@ -17,9 +17,7 @@ jobs:
     steps:
       - if: inputs.prerelease
         run: |
-          echo "${{ inputs.prerelease }}"
-          echo "${{ fromJson(inputs.prerelease) }}"
-          echo "${{ fromJson(inputs) }}"
+          echo "${{ toJson(inputs) }}"
       - if: fromJson(inputs.prerelease)
         run: |
           echo "${{ toJson(inputs) }}"
