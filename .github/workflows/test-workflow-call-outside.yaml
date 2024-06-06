@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
 
-name: workflow-call
+name: calling-workflow-call
 
 jobs:
   test-inputs:
