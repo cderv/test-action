@@ -19,7 +19,6 @@ jobs:
         run: |
           echo "${{ toJson(inputs) }}"
           echo "${{ toJson(inputs.prerelease) }}"
-          echo "${{ fromJson(inputs.prerelease) }}"
       - if: (inputs.prerelease != null && inputs.prerelease == true) || github.event_name == 'workflow_dispatch'
         run: |
           echo "${{ toJson(inputs) }}"
