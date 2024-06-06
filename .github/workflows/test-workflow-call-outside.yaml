@@ -8,4 +8,8 @@ jobs:
     uses: ./.github/workflows/test-workflow-call.yaml
     with:
       prerelease: true
+  test-inputs2:
+    uses: ./.github/workflows/test-workflow-call.yaml
+    with:
+      prerelease: false
       
