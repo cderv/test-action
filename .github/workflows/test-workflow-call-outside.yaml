@@ -4,18 +4,8 @@ on:
 name: workflow-call
 
 jobs:
-  build-deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      # call the test-workflow-call.yaml workflow
-      - name: Call the workflow
-        uses: ./.github/workflows/test-workflow-call.yaml
-        with:
-          prerelease: true
-      # call the test-workflow-call.yaml workflow
-      - name: Call the workflow
-        uses: ./.github/workflows/test-workflow-call.yaml
-        with:
-          prerelease: false
+  test-inputs:
+    uses: ./.github/workflows/test-workflow-call.yaml
+    with:
+      prerelease: true
       
