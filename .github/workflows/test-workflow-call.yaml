@@ -26,3 +26,9 @@ jobs:
       - if: inputs.prerelease == null
         run: |
           echo "${{ toJson(inputs) }}"
+      - if: contains(fromJson('false'), inputs.prerelease)
+        run: |
+          echo "${{ toJson(inputs) }}"
+      - if: format('{0}', inputs.prerelease) == 'false'
+        run: |
+          echo "${{ toJson(inputs) }}"
