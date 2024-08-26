@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         
       - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+        uses: gaborcsardi/quarto-actions/setup@fix/setup-runner-temp
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@main
@@ -22,10 +22,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         
       - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+        uses: gaborcsardi/quarto-actions/setup@fix/setup-runner-temp
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@main
@@ -35,10 +35,10 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         
       - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+        uses: gaborcsardi/quarto-actions/setup@fix/setup-runner-temp
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@main
